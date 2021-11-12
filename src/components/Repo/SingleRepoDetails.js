@@ -38,7 +38,6 @@ export default function SingleRepoDetails() {
           <p>Default Branch: BRANCH-NAME</p>
           <p>Number Of open issues: ISSUES-COUNT</p>
         </div>
-
         <NavLink to="/">Go Back</NavLink>
       </div>
     </div>
