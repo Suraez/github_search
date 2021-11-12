@@ -1,9 +1,15 @@
 import React from "react";
+import Header from "./partials/Header";
+import Repos from "./Repo/Repos";
 
 export default function SearchResults() {
   return (
-    <div>
-      <h1>Search Results</h1>
-    </div>
+    <>
+      <Header />
+      <Repos />
+      <Repos />
+      <Repos />
+      <Repos />
+    </>
   );
 }

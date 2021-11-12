@@ -1,9 +1,15 @@
 import React from "react";
+import styles from "../../assets/styles/footer.module.css";
 
 export default function Footer() {
   return (
-    <div>
-      <h1 style={{ color: "black" }}>Footer</h1>
+    <div className={styles.footer_body}>
+      <div>
+        <hr />
+        <h4 className={styles.copyright}>
+          Copyright &copy; 2021 | Suraj Ojha{" "}
+        </h4>
+      </div>
     </div>
   );
 }
