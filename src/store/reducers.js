@@ -4,6 +4,8 @@ const initialState = {
   repoList: [],
   hasSearchResults: false,
   repoName: "",
+  singleRepo: null,
+  loading: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -14,6 +16,19 @@ const reducer = (state = initialState, action) => {
         repoList: action.payload.repos,
         hasSearchResults: true,
         repoName: action.payload.queryString,
+      };
+
+    case ACTIONS.FETCH_SINGLE_REPO_START:
+      return {
+        ...state,
+        loading: action.payload.loading,
+      };
+
+    case ACTIONS.FETCH_SINGLE_REPO_SUCCESS:
+      return {
+        ...state,
+        loading: action.payload.loading,
+        singleRepo: action.payload.singleRepo,
       };
 
     default:

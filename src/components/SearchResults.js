@@ -6,6 +6,7 @@ import RepoCard from "./Repo/RepoCard";
 import RepoPagination from "./partials/RepoPagination";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 // importing actions
 import { searchRepos } from "../store/actions";
 import "../assets/styles/pagination.css";
@@ -96,7 +97,19 @@ function SearchResults(props) {
         </div>
       </div>
       {slicedRepos &&
-        slicedRepos.map((repo) => <RepoCard repo={repo} key={repo.id} />)}
+        slicedRepos.map((repo) => (
+          <NavLink
+            to={{
+              pathname: "/single-repo",
+            }}
+            state={{
+              url: repo.url,
+            }}
+            key={repo.id}
+          >
+            <RepoCard repo={repo} />
+          </NavLink>
+        ))}
 
       {/* pagination starts here */}
       <div className="container">
