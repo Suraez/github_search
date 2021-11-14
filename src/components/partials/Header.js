@@ -11,6 +11,10 @@ function Header(props) {
         </div>
         <div className="col-12">
           <h5>Showing Results For {props.repoName}</h5>
+          <h6>
+            Showing Results {props.noOfRepos} of {props.totalRepos}
+          </h6>
+          <p>Page {props.currentPage}</p>
         </div>
         <div className="col-12">
           <hr />
