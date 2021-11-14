@@ -2,13 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 
 function Header(props) {
-  console.log(props.repoName);
+  // console.log(props.repoName);
   return (
     <div className="container mt-4">
       <div className="row">
-        <div className="col-12">
-          <h4>GitHub Search</h4>
-        </div>
         <div className="col-12">
           <h5>Showing Results For {props.repoName}</h5>
           <h6>
