@@ -3,7 +3,8 @@ import Footer from "./partials/Footer";
 import styles from "../assets/styles/home.module.css";
 import SearchBar from "./partials/SearchBar";
 
-export default function Home() {
+
+function Home() {
   return (
     <div className="container-fluid m-4">
       <div className={styles.alignment}>
@@ -20,3 +21,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default Home;

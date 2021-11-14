@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { Navigate } from "react-router";
+import { connect } from "react-redux";
 
-export default function SearchBar(props) {
+// importing actions
+import { searchRepos } from "../../store/actions";
+
+function SearchBar(props) {
   const style = props.firstPage ? "d-flex justify-content-center" : "d-flex";
   const style2 = props.firstPage ? "" : "d-flex";
   const style3 = props.firstPage ? "mb-3" : "mr-3";
 
   const [queryString, setqueryString] = useState("");
-  const [repoList, setrepoList] = useState([]);
+  // const [repoList, setrepoList] = useState([]);
 
   const onSubmitHandler = (e, query) => {
     e.preventDefault();
@@ -19,8 +23,9 @@ export default function SearchBar(props) {
           query
       )
       .then((response) => {
-        console.log(response.data);
-        setrepoList(response.data.data);
+        console.log("results have been fetched");
+        // console.log(response.data.data);
+        props.onSearchRepos(response.data.data.items, queryString);
       })
       .catch((err) => {
         console.log(err);
@@ -29,7 +34,7 @@ export default function SearchBar(props) {
 
   return (
     <>
-      {repoList.length !== 0 ? <Navigate to="/search-results" /> : null}
+      {props.hasSearchResults ? <Navigate to="/search-results" /> : null}
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -57,3 +62,18 @@ export default function SearchBar(props) {
     </>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    hasSearchResults: state.repos.hasSearchResults,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSearchRepos: (repos, queryString) =>
+      dispatch(searchRepos(repos, queryString)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

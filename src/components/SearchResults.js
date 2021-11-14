@@ -1,15 +1,25 @@
 import React from "react";
 import Header from "./partials/Header";
-import Repos from "./Repo/Repos";
 
-export default function SearchResults() {
+import { connect } from "react-redux";
+import RepoCard from "./Repo/RepoCard";
+
+function SearchResults(props) {
+  const slicedRepos = props.repoList.slice(0, 2);
   return (
     <>
       <Header />
-      <Repos />
-      <Repos />
-      <Repos />
-      <Repos />
+      {slicedRepos.map((repo) => (
+        <RepoCard repo={repo} key={repo.id} />
+      ))}
     </>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    repoList: state.repos.repoList,
+  };
+};
+
+export default connect(mapStateToProps)(SearchResults);
