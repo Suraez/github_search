@@ -38,7 +38,7 @@ function SingleRepoDetails(props) {
             <div className="col-12">
               <p>
                 {" "}
-                {props.singleRepo.name}by {props.singleRepo.owner.login}
+                {props.singleRepo.name} by {props.singleRepo.owner.login}
               </p>
             </div>
             <hr />
