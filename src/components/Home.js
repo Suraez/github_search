@@ -3,7 +3,6 @@ import Footer from "./partials/Footer";
 import styles from "../assets/styles/home.module.css";
 import SearchBar from "./partials/SearchBar";
 
-
 function Home() {
   return (
     <div className="container-fluid m-4">
@@ -11,6 +10,7 @@ function Home() {
         <div className="row">
           <div className="col-12">
             <h4>Github Search</h4>
+            <h5>Developed by Suraj Ojha</h5>
           </div>
         </div>
         <div className="col-12">
