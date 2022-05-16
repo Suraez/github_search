@@ -18,13 +18,8 @@ function SearchBar(props) {
   const onSubmitHandler = (e, query) => {
     e.preventDefault();
     axios
-      .get(
-        "https://githubsearchbysuraj.herokuapp.com/search/repositories?q=" +
-          query
-      )
+      .get("https://githubsearchbysuraj.herokuapp.com/search/repositories?q=" + query)
       .then((response) => {
-        console.log("results have been fetched");
-        // console.log(response.data.data);
         props.onSearchRepos(response.data.data.items, queryString);
       })
       .catch((err) => {
@@ -38,10 +33,7 @@ function SearchBar(props) {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <Form
-              className={style2}
-              onSubmit={(e) => onSubmitHandler(e, queryString)}
-            >
+            <Form className={style2} onSubmit={(e) => onSubmitHandler(e, queryString)}>
               <Form.Group className={style3} controlId="formBasicEmail">
                 <Form.Control
                   type="text"
@@ -71,8 +63,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSearchRepos: (repos, queryString) =>
-      dispatch(searchRepos(repos, queryString)),
+    onSearchRepos: (repos, queryString) => dispatch(searchRepos(repos, queryString)),
   };
 };
 
